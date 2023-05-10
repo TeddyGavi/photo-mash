@@ -17,6 +17,14 @@
         {
           "cameraPermission": "Allow $(PRODUCT_NAME) to access your camera."
         }
+      ],
+      [
+        "expo-media-library",
+        {
+          "photosPermissions": "Allow $(PRODUCT_NAME) to access your photos.",
+          "savePhotosPermission": "Allow $(PRODUCT_NAME) to access your photos.",
+          "isAccessMediaLocationEnabled": "true"
+        }
       ]
     ],
     "assetBundlePatterns": ["**/*"],
