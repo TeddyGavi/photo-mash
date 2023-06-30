@@ -18,7 +18,6 @@ interface userPreference {
 interface useThemeAPI {
   userPreference: userPreference;
   currentTheme: NavigationTheme;
-  isThemeDark: boolean;
 }
 function useUserTheme(): useThemeAPI {
   const [isThemeDark, setIsThemeDark] = useState<boolean>(false);
@@ -60,7 +59,7 @@ function useUserTheme(): useThemeAPI {
     [toggle, isThemeDark]
   );
 
-  return { userPreference, currentTheme, isThemeDark };
+  return { userPreference, currentTheme };
 }
 
 export default useUserTheme;

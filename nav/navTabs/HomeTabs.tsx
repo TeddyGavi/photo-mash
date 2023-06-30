@@ -1,7 +1,7 @@
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
-import Gallery from "../screens/Gallery";
-import CameraRoll from "../screens/CameraRoll";
+import Gallery from "../../screens/Gallery";
+import CameraRoll from "../../screens/CameraRoll";
 
 import React from "react";
 
