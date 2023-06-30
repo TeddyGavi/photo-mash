@@ -1,40 +1,53 @@
-import { StatusBar } from "expo-status-bar";
-import {
-  StyleSheet,
-  Text,
-  View,
-  SafeAreaView,
-  TouchableOpacity,
-} from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import Gallery from "./components/Gallery";
-import Home from "./components/Home";
-import CameraRoll from "./components/CameraRoll";
+import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
+import Gallery from "./screens/Gallery";
+import CameraRoll from "./screens/CameraRoll";
+import { PaperProvider } from "react-native-paper";
+import { ThemeContext } from "./context/themeContext";
+import useUserTheme from "./hooks/useUserTheme";
+import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 
-const Stack = createNativeStackNavigator();
+const Tabs = createMaterialBottomTabNavigator();
 
 export default function App() {
+  const { userPreference, currentTheme } = useUserTheme();
+
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
-          name="Home"
-          component={Home}
-          options={{ title: "Welcome" }}
-        />
-        <Stack.Screen name="Gallery" component={Gallery} />
-        <Stack.Screen name="Camera" component={CameraRoll} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <ThemeContext.Provider value={userPreference}>
+      <PaperProvider theme={currentTheme}>
+        <NavigationContainer theme={currentTheme}>
+          <Tabs.Navigator
+            screenOptions={({ route }) => ({
+              tabBarIcon: ({ color }) => {
+                let iconName;
+
+                if (route.name === "Home") {
+                  iconName = "home";
+                } else if (route.name === "Camera") {
+                  iconName = "camera";
+                }
+
+                // You can return any component that you like here!
+                return (
+                  <MaterialCommunityIcons
+                    name={`${iconName}`}
+                    size={26}
+                    color={color}
+                  />
+                );
+              },
+            })}
+          >
+            {/* <Tabs.Screen
+            name="Home"
+            component={Home}
+            options={{ title: "Welcome" }}
+          /> */}
+            <Tabs.Screen name="Home" component={Gallery} />
+            <Tabs.Screen name="Camera" component={CameraRoll} />
+          </Tabs.Navigator>
+        </NavigationContainer>
+      </PaperProvider>
+    </ThemeContext.Provider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});

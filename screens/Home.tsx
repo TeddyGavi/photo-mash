@@ -6,14 +6,6 @@ const Home = ({ navigation }) => {
   return (
     <SafeAreaView>
       <Text>Home</Text>
-      <Button
-        title="Camera"
-        onPress={() => navigation.navigate("Camera")}
-      ></Button>
-      <Button
-        title="Gallery"
-        onPress={() => navigation.navigate("Gallery")}
-      ></Button>
     </SafeAreaView>
   );
 };
