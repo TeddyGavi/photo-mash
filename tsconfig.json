@@ -3,5 +3,5 @@
   "compilerOptions": {
     "strict": true
   },
-  "include": ["./*", "nav/*"]
+  "include": ["./*", "nav/*", "screens", "hooks", "context"]
 }
