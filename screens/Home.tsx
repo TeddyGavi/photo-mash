@@ -1,5 +1,5 @@
 import { Button, StyleSheet, Text, SafeAreaView } from "react-native";
-import { NavigationProp } from "@react-navigation/native";
+import { NavigatorScreenParams } from "@react-navigation/native";
 import React from "react";
 
 const Home = ({ navigation }) => {

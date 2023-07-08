@@ -2,8 +2,10 @@ import { createMaterialBottomTabNavigator } from "@react-navigation/material-bot
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import Gallery from "../../screens/Gallery";
 import CameraRoll from "../../screens/CameraRoll";
+import CameraStack from "../stack/CameraStack";
 
 import React from "react";
+import { View } from "react-native";
 
 export function HomeTabs() {
   const HomeTabs = createMaterialBottomTabNavigator();
@@ -30,11 +32,6 @@ export function HomeTabs() {
         },
       })}
     >
-      {/* <Tabs.Screen
-            name="Home"
-            component={Home}
-            options={{ title: "Welcome" }}
-          /> */}
       <HomeTabs.Screen name="Home" component={Gallery} />
       <HomeTabs.Screen name="Camera" component={CameraRoll} />
     </HomeTabs.Navigator>
